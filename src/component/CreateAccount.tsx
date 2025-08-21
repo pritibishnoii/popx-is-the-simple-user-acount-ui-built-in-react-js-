@@ -5,12 +5,19 @@ import { useState } from "react"
 import { Button } from "./Button"
 import { Input } from "./Input"
 
-interface CreateAccountScreenProps {
-  onNavigate: (screen: "welcome" | "signin" | "create" | "settings") => void
-  onAccountCreated: (userData: any) => void
+interface UserData {
+  name: string
+  email: string
+  phone: string
+  company: string
+  isAgency: boolean
 }
 
-export default function CreateAccountScreen({ onNavigate, onAccountCreated }: CreateAccountScreenProps) {
+interface CreateAccountScreenProps {
+  onAccountCreated: (userData: UserData) => void
+}
+
+export default function CreateAccountScreen({ onAccountCreated }: CreateAccountScreenProps) {
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",

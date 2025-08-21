@@ -1,11 +1,15 @@
 import profile from "../assets/profile.jpg"
 
-interface AccountSettingsScreenProps {
-  user: any
-  onNavigate: (screen: "welcome" | "signin" | "create" | "settings") => void
+interface User {
+  name?: string;
+  email?: string;
 }
 
-export default function AccountSettings({ user, onNavigate }: AccountSettingsScreenProps) {
+interface AccountSettingsScreenProps {
+  user: User;
+}
+
+export default function AccountSettings({ user }: AccountSettingsScreenProps) {
   return (
     <div className="flex flex-col min-h-screen px-6 py-8 max-w-sm mx-auto">
       <div className="mb-8">

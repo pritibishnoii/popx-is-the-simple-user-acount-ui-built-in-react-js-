@@ -1,4 +1,3 @@
-"use client"
 
 import type React from "react"
 
@@ -6,12 +5,16 @@ import { useState } from "react"
 import { Button } from "./Button"
 import { Input } from "./Input"
 
-interface SignInScreenProps {
-  onNavigate: (screen: "welcome" | "signin" | "create" | "settings") => void
-  onSignIn: (userData: any) => void
+interface UserData {
+  email: string;
+  name: string;
 }
 
-export default function Signin({ onNavigate, onSignIn }: SignInScreenProps) {
+interface SignInScreenProps {
+  onSignIn: (userData: UserData) => void
+}
+
+export default function Signin({  onSignIn }: SignInScreenProps) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
