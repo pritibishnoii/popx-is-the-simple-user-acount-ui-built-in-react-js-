@@ -1,3 +1,5 @@
+import profile from "../assets/profile.jpg"
+
 interface AccountSettingsScreenProps {
   user: any
   onNavigate: (screen: "welcome" | "signin" | "create" | "settings") => void
@@ -13,7 +15,7 @@ export default function AccountSettings({ user, onNavigate }: AccountSettingsScr
       <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
         <div className="flex items-start gap-4 mb-4">
           <div className="relative">
-            <img src="/professional-woman-avatar.png" alt="Profile" className="w-16 h-16 rounded-full object-cover" />
+            <img src={profile} alt="Profile" className="w-16 h-16 rounded-full object-cover" />
             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
               <span className="text-white text-xs">✓</span>
             </div>
