@@ -1,12 +1,9 @@
 import profile from "../assets/profile.jpg"
 
-interface User {
-  name?: string;
-  email?: string;
-}
+import type { UserData } from "../App";
 
 interface AccountSettingsScreenProps {
-  user: User;
+  user: UserData | null;
 }
 
 export default function AccountSettings({ user }: AccountSettingsScreenProps) {

@@ -1,24 +1,35 @@
 
-import { useState } from "react"
+import {useState} from "react"
+
 import WelcomeScreen from "./component/Welcome"
 import SignInScreen from "./component/Signin"
 import CreateAccountScreen from "./component/CreateAccount"
 import AccountSettingsScreen from "./component/AccountSettings"
 
+// Define the User type (customize fields as needed)
+// Use the same UserData type as in Signin/CreateAccount
+export type UserData = {
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  isAgency?: boolean;
+};
+
 function App() {
   const [currentScreen, setCurrentScreen] = useState<"welcome" | "signin" | "create" | "settings">("welcome")
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<UserData | null>(null)
 
   const handleNavigation = (screen: "welcome" | "signin" | "create" | "settings") => {
     setCurrentScreen(screen)
   }
 
-  const handleAccountCreated = (userData: any) => {
+  const handleAccountCreated = (userData: UserData) => {
     setUser(userData)
     setCurrentScreen("settings")
   }
 
-  const handleSignIn = (userData: any) => {
+  const handleSignIn = (userData: UserData) => {
     setUser(userData)
     setCurrentScreen("settings")
   }
@@ -26,11 +37,11 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       {currentScreen === "welcome" && <WelcomeScreen onNavigate={handleNavigation} />}
-      {currentScreen === "signin" && <SignInScreen onNavigate={handleNavigation} onSignIn={handleSignIn} />}
+      {currentScreen === "signin" && <SignInScreen onSignIn={handleSignIn} />}
       {currentScreen === "create" && (
-        <CreateAccountScreen onNavigate={handleNavigation} onAccountCreated={handleAccountCreated} />
+        <CreateAccountScreen  onAccountCreated={handleAccountCreated} />
       )}
-      {currentScreen === "settings" && <AccountSettingsScreen user={user} onNavigate={handleNavigation} />}
+      {currentScreen === "settings" && <AccountSettingsScreen user={user}  />}
     </div>
   )
 }
